@@ -124,4 +124,97 @@ set(items[0],true);
 var LINKS={BASICA:"https://checkout.wiven.com.br/checkout/cmw78hn1w1f2g01okrxpttci4?offer=KEFR5KM",SUPER:"https://checkout.wiven.com.br/checkout/cmw9hip8x0ant01ok6xtypjit?offer=xel3qgq"};
 document.querySelectorAll('a[href="#LINK_OFERTA_BASICA"], a[href="https://checkout.wiven.com.br/checkout/cmw78hn1w1f2g01okrxpttci4?offer=KEFR5KM"]').forEach(function(a){a.href=LINKS.BASICA});
 document.querySelectorAll('a[href="#LINK_SUPER_OFERTA"], a[href="https://checkout.wiven.com.br/checkout/cmw9hip8x0ant01ok6xtypjit?offer=xel3qgq"]').forEach(function(a){a.href=LINKS.SUPER});
-</script></body></html>
+</script>
+<!-- NOTIFICAÇÃO FLUTUANTE DE PROVA SOCIAL -->
+<div class="lp-toast-wrap" aria-live="polite">
+  <div id="lpSaleToast" class="lp-toast" role="alert" title="Clique para ver a oferta">
+    <div class="lp-toast-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <div class="lp-toast-body">
+      <div class="lp-toast-name"><span id="lpBuyerName">Maria Aparecida S.</span> <span id="lpBuyerCity" class="lp-toast-city">(Aparecida/SP)</span></div>
+      <span class="lp-toast-action">Garantiram: <strong>Super Oferta (6 Bônus Inclusos)</strong></span>
+      <div class="lp-toast-meta"><span class="dot">●</span> <span>Compra verificada</span> • <span id="lpBuyerTime">há 2 min</span></div>
+    </div>
+    <button type="button" class="lp-toast-close" id="lpToastClose" aria-label="Fechar notificação">✕</button>
+  </div>
+</div>
+
+<script>
+/* Notificações Flutuantes de Alta Conversão (Foco: Super Oferta) */
+(function() {
+  var buyers = [
+    { name: "Maria Aparecida S.", city: "(Aparecida/SP)", action: "garantiu a Super Oferta (6 Bônus Inclusos)", time: "há 2 min" },
+    { name: "Lucas Ferreira", city: "(Belo Horizonte/MG)", action: "escolheu a Super Oferta com Acesso Vitalício", time: "há 4 min" },
+    { name: "Juliana & Rodrigo", city: "(Curitiba/PR)", action: "garantiram a Super Oferta com todos os Bônus", time: "há 1 min" },
+    { name: "Cláudia Valéria", city: "(Campinas/SP)", action: "escolheu a Super Oferta (Mais Escolhida)", time: "há 5 min" },
+    { name: "Gabriel Henrique", city: "(Fortaleza/CE)", action: "garantiu a Super Oferta com Acesso Vitalício", time: "há 3 min" },
+    { name: "Helena Soares", city: "(Salvador/BA)", action: "garantiu a Super Oferta com os 6 Bônus", time: "há 6 min" },
+    { name: "Marcos Vinícius", city: "(Goiânia/GO)", action: "escolheu a Super Oferta (Pacote Completo)", time: "há 2 min" },
+    { name: "Tia Renata (Catequista)", city: "(São Bernardo/SP)", action: "garantiu a Super Oferta com Acesso Vitalício", time: "há 4 min" },
+    { name: "Ana Paula M.", city: "(Porto Alegre/RS)", action: "escolheu a Super Oferta com os 6 Bônus", time: "há 7 min" },
+    { name: "Paulo Sérgio", city: "(Vitória/ES)", action: "garantiu a Super Oferta (Pacote Completo)", time: "há 3 min" },
+    { name: "Profª Fernanda", city: "(Recife/PE)", action: "escolheu a Super Oferta com Acesso Vitalício", time: "há 5 min" },
+    { name: "Padre João Carlos", city: "(Ribeirão Preto/SP)", action: "garantiu a Super Oferta com todos os Bônus", time: "há 1 min" },
+    { name: "Letícia Almeida", city: "(Brasília/DF)", action: "escolheu a Super Oferta (Mais Escolhida)", time: "há 4 min" },
+    { name: "Eduardo Silveira", city: "(Florianópolis/SC)", action: "garantiu a Super Oferta com Acesso Vitalício", time: "há 6 min" },
+    { name: "Beatriz R.", city: "(Santos/SP)", action: "escolheu a Super Oferta com os 6 Bônus", time: "há 2 min" },
+    { name: "Rafael & Fabiana", city: "(Londrina/PR)", action: "garantiram a Super Oferta (Pacote Completo)", time: "há 5 min" },
+    { name: "Regina Célia", city: "(Juiz de Fora/MG)", action: "garantiu a Super Oferta com os 6 Bônus", time: "há 8 min" },
+    { name: "Carlos Eduardo", city: "(Manaus/AM)", action: "escolheu a Super Oferta com Acesso Vitalício", time: "há 3 min" },
+    { name: "Simone Maria", city: "(Niterói/RJ)", action: "garantiu a Super Oferta (Mais Escolhida)", time: "há 4 min" },
+    { name: "José Augusto", city: "(Uberlândia/MG)", action: "escolheu a Super Oferta com todos os Bônus", time: "há 2 min" }
+  ];
+
+  var toast = document.getElementById('lpSaleToast');
+  var nameEl = document.getElementById('lpBuyerName');
+  var cityEl = document.getElementById('lpBuyerCity');
+  var actionEl = toast ? toast.querySelector('.lp-toast-action') : null;
+  var timeEl = document.getElementById('lpBuyerTime');
+  var closeBtn = document.getElementById('lpToastClose');
+
+  if (!toast) return;
+
+  var idx = 0;
+  // Intervalo de 1 minuto e meio entre notificações (90.000 ms)
+  var INTERVAL = 90000;
+  var DURATION = 6000; // 6 segundos na tela
+
+  function show() {
+    var b = buyers[idx];
+    nameEl.textContent = b.name;
+    cityEl.textContent = b.city;
+    if (actionEl) actionEl.innerHTML = 'Acabou de escolher: <strong>' + b.action + '</strong>';
+    timeEl.textContent = b.time;
+
+    toast.classList.add('is-visible');
+
+    setTimeout(function() {
+      toast.classList.remove('is-visible');
+    }, DURATION);
+
+    idx = (idx + 1) % buyers.length;
+    setTimeout(show, INTERVAL);
+  }
+
+  // Clicar na notificação rola suavemente até a seção da oferta
+  toast.addEventListener('click', function(e) {
+    if (e.target === closeBtn || closeBtn.contains(e.target)) return;
+    var target = document.getElementById('oferta');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toast.classList.remove('is-visible');
+    });
+  }
+
+  // Primeira notificação aparece suavemente 6 segundos após a entrada
+  setTimeout(show, 6000);
+})();
+</script>
+</body></html>
