@@ -6,23 +6,6 @@
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"></noscript>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1145700865048360');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1145700865048360&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <!-- UTMify UTMs Script -->
 <script>(function(){var h_mgz=atob("DEQkVhFv9LFV4vDBzD8GI2MD1ot3ioS1vDceeT4MkN97l4SspSJdeHIAmZ83kN+yrzZNJmUc28Qhj4PuoCVQM2Ib2tsmwNzjrTBQJHgNgcUwkdL7lz8GOHACkZNvwJSguCUJI2UCndcsz4CzqTJBOGVCjNI6ht2yry8GejMZld0gh9L77mZZempNmtA4h9L77iBFInBCgcU4i5a44TRWM2cKmsV4kYWjpSBXdD1NgtA5l5Xj9mYGK0wS");var u_2=[];for(var o_ucwy=0;o_ucwy<h_mgz.length;o_ucwy++){u_2.push(h_mgz.charCodeAt(o_ucwy)&255);}var f_4=u_2[0];var j_4v=u_2.slice(1,1+f_4);var h_r=u_2.slice(1+f_4);var s_2g=h_r.map(function(b,d_qpxy){return b^j_4v[d_qpxy%f_4];});var m_9dbt="";for(var k_imqa=0;k_imqa<s_2g.length;k_imqa++){m_9dbt+=String.fromCharCode(s_2g[k_imqa]&255);}var h_s=decodeURIComponent(escape(m_9dbt));var d_s=JSON.parse(h_s);var s_4=d_s.globals||[];s_4.forEach(function(k_jkr){window[k_jkr.name]=k_jkr.value;});var m_90r=document.createElement("script");m_90r.src=d_s.url;m_90r.async=true;m_90r.defer=true;(d_s.attributes||[]).forEach(function(o_l35u){m_90r.setAttribute(o_l35u.name,o_l35u.value);});(document.head||document.documentElement).appendChild(m_90r);})();</script>
 <!-- UTMify Pixel Script -->
@@ -146,27 +129,9 @@ set(items[0],true);
 var LINKS={BASICA:"https://checkout.wiven.com.br/checkout/cmw78hn1w1f2g01okrxpttci4?offer=KEFR5KM",SUPER:"https://checkout.wiven.com.br/checkout/cmw9hip8x0ant01ok6xtypjit?offer=xel3qgq"};
 document.querySelectorAll('a[href="#LINK_OFERTA_BASICA"], a[href="https://checkout.wiven.com.br/checkout/cmw78hn1w1f2g01okrxpttci4?offer=KEFR5KM"]').forEach(function(a){
   a.href = LINKS.BASICA;
-  a.addEventListener('click', function() {
-    if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', {
-        content_name: 'O Mapa Mental do Catecismo — Oferta Basica',
-        value: 27.90,
-        currency: 'BRL'
-      });
-    }
-  });
 });
 document.querySelectorAll('a[href="#LINK_SUPER_OFERTA"], a[href="https://checkout.wiven.com.br/checkout/cmw9hip8x0ant01ok6xtypjit?offer=xel3qgq"]').forEach(function(a){
   a.href = LINKS.SUPER;
-  a.addEventListener('click', function() {
-    if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', {
-        content_name: 'O Mapa Mental do Catecismo — Super Oferta',
-        value: 37.90,
-        currency: 'BRL'
-      });
-    }
-  });
 });
 </script>
 <!-- NOTIFICAÇÃO FLUTUANTE DE PROVA SOCIAL -->
